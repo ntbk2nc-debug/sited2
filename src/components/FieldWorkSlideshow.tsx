@@ -166,20 +166,32 @@ export const FieldWorkSlideshow: React.FC = () => {
     return () => clearInterval(progressTimer);
   }, [isPlaying, handleNext]);
 
-  // Keyboard navigation
+  // Keyboard navigation (guarded against form inputs & modals)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
+          target.isContentEditable ||
+          target.closest('input, textarea, select, [contenteditable="true"], [role="dialog"]'))
+      ) {
+        return;
+      }
+
       if (e.key === 'ArrowRight') handleNext();
       if (e.key === 'ArrowLeft') handlePrev();
-      if (e.key === 'Escape') setIsLightboxOpen(false);
-      if (e.key === ' ') {
+      if (e.key === 'Escape' && isLightboxOpen) setIsLightboxOpen(false);
+      if (e.key === ' ' && isLightboxOpen) {
         e.preventDefault();
         setIsPlaying((p) => !p);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleNext, handlePrev]);
+  }, [handleNext, handlePrev, isLightboxOpen]);
 
   return (
     <section id="gallery" className="py-20 sm:py-28 bg-stone-100 text-stone-900 border-b border-stone-200/80">

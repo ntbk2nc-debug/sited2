@@ -131,21 +131,30 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDonate, onOpenMentorModal 
             <div className="space-y-2.5 text-stone-400">
               <p>
                 <strong className="text-stone-200 block font-normal">Mandisi Nkala (Treasurer):</strong>
-                <a href={`tel:${ORG_DETAILS.contacts.treasurer.phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">
+                <a href={`tel:${ORG_DETAILS.contacts.treasurer.phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors block">
                   {ORG_DETAILS.contacts.treasurer.phone}
                 </a>
               </p>
               <p>
                 <strong className="text-stone-200 block font-normal">Zamamvula Cebekhulu (Secretary):</strong>
-                <a href={`tel:${ORG_DETAILS.contacts.secretary.phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">
+                <a href={`tel:${ORG_DETAILS.contacts.secretary.phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors block">
                   {ORG_DETAILS.contacts.secretary.phone}
                 </a>
               </p>
-              <p className="pt-1">
-                <a href={`mailto:${ORG_DETAILS.contacts.generalEmail}`} className="text-stone-300 hover:text-white transition-colors">
-                  {ORG_DETAILS.contacts.generalEmail}
-                </a>
-              </p>
+              <div className="pt-2 border-t border-stone-800/80 space-y-1">
+                <div>
+                  <span className="text-[10px] text-stone-500 block uppercase tracking-wider">General & Info:</span>
+                  <a href={`mailto:${ORG_DETAILS.contacts.generalEmail}`} className="text-stone-300 hover:text-white transition-colors block font-mono text-[11px]">
+                    {ORG_DETAILS.contacts.generalEmail}
+                  </a>
+                </div>
+                <div>
+                  <span className="text-[10px] text-stone-500 block uppercase tracking-wider">Donations & Proof of Payment:</span>
+                  <a href={`mailto:${ORG_DETAILS.contacts.donationsEmail}`} className="text-amber-400 hover:text-amber-300 transition-colors block font-mono text-[11px]">
+                    {ORG_DETAILS.contacts.donationsEmail}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

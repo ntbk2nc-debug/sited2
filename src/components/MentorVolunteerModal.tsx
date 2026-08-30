@@ -15,6 +15,7 @@ export const MentorVolunteerModal: React.FC<MentorVolunteerModalProps> = ({ isOp
   const [phone, setPhone] = useState<string>('');
   const [location, setLocation] = useState<string>('');
   const [experience, setExperience] = useState<string>('');
+  const [customSkill, setCustomSkill] = useState<string>('');
   const [skillsOffered, setSkillsOffered] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState<boolean>(false);
 
@@ -46,8 +47,9 @@ export const MentorVolunteerModal: React.FC<MentorVolunteerModalProps> = ({ isOp
   };
 
   const buildMailtoUrl = () => {
-    const recipient = ORG_DETAILS.contacts.generalEmail; // b2msouthafrica@gmail.com
+    const recipient = ORG_DETAILS.contacts.generalEmail;
     const subject = encodeURIComponent(`Volunteer & Mentor Application: ${fullName} (${roleLabels[roleType] || roleType})`);
+    const allSkills = [...skillsOffered, ...(customSkill.trim() ? [`Other: ${customSkill.trim()}`] : [])];
     const body = encodeURIComponent(
 `BOYS 2 MEN SOUTH AFRICA - VOLUNTEER / MENTOR APPLICATION
 
@@ -58,7 +60,7 @@ Location: ${location || 'N/A'}
 Requested Role: ${roleLabels[roleType] || roleType}
 
 Skills & Areas Offered:
-${skillsOffered.length > 0 ? skillsOffered.map(s => `- ${s}`).join('\n') : '- General Support'}
+${allSkills.length > 0 ? allSkills.map(s => `- ${s}`).join('\n') : '- General Support'}
 
 Motivation & Experience:
 ${experience || 'None provided'}
@@ -80,7 +82,7 @@ Application submitted via Boys 2 Men South Africa web portal.`
       colors: ['#F59E0B', '#C26118', '#10B981'],
     });
 
-    // Trigger direct email sending to Boys 2 Men South Africa
+    // Trigger direct email sending to B2M
     const mailtoUrl = buildMailtoUrl();
     window.location.href = mailtoUrl;
 
@@ -88,7 +90,7 @@ Application submitted via Boys 2 Men South Africa web portal.`
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-950/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6">
+    <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 overflow-y-auto bg-stone-950/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6">
       <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-stone-200 overflow-hidden text-stone-900 text-left">
         {/* Header banner */}
         <div className="bg-stone-900 text-stone-100 p-6 sm:p-7 flex items-start justify-between">
@@ -227,6 +229,15 @@ Application submitted via Boys 2 Men South Africa web portal.`
                       </button>
                     );
                   })}
+                </div>
+                <div className="pt-1">
+                  <input
+                    type="text"
+                    placeholder="Other specific skill, trade, or topic (optional)..."
+                    value={customSkill}
+                    onChange={(e) => setCustomSkill(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:border-stone-900 text-xs text-stone-900 transition-colors"
+                  />
                 </div>
               </div>
 

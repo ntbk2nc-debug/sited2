@@ -50,14 +50,15 @@ export const ContactAndTransparency: React.FC = () => {
                     href={`tel:${ORG_DETAILS.contacts.treasurer.phone.replace(/\s+/g, '')}`}
                     className="flex items-center gap-2 text-stone-600 hover:text-stone-900 transition-colors"
                   >
-                    <Phone className="w-3.5 h-3.5 text-stone-400" />
+                    <Phone className="w-3.5 h-3.5 text-stone-400 flex-shrink-0" />
                     <span>{ORG_DETAILS.contacts.treasurer.phone}</span>
                   </a>
                   <a
                     href={`mailto:${ORG_DETAILS.contacts.treasurer.email}`}
                     className="flex items-center gap-2 text-stone-600 hover:text-stone-900 transition-colors truncate"
+                    title={ORG_DETAILS.contacts.treasurer.email}
                   >
-                    <Mail className="w-3.5 h-3.5 text-stone-400" />
+                    <Mail className="w-3.5 h-3.5 text-stone-400 flex-shrink-0" />
                     <span className="truncate">{ORG_DETAILS.contacts.treasurer.email}</span>
                   </a>
                 </div>
@@ -77,31 +78,54 @@ export const ContactAndTransparency: React.FC = () => {
                     href={`tel:${ORG_DETAILS.contacts.secretary.phone.replace(/\s+/g, '')}`}
                     className="flex items-center gap-2 text-stone-600 hover:text-stone-900 transition-colors"
                   >
-                    <Phone className="w-3.5 h-3.5 text-stone-400" />
+                    <Phone className="w-3.5 h-3.5 text-stone-400 flex-shrink-0" />
                     <span>{ORG_DETAILS.contacts.secretary.phone}</span>
                   </a>
                   <a
                     href={`mailto:${ORG_DETAILS.contacts.secretary.email}`}
                     className="flex items-center gap-2 text-stone-600 hover:text-stone-900 transition-colors truncate"
+                    title={ORG_DETAILS.contacts.secretary.email}
                   >
-                    <Mail className="w-3.5 h-3.5 text-stone-400" />
+                    <Mail className="w-3.5 h-3.5 text-stone-400 flex-shrink-0" />
                     <span className="truncate">{ORG_DETAILS.contacts.secretary.email}</span>
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* General Enquiries Card */}
-            <div className="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-xs space-y-3 text-xs">
-              <span className="text-stone-400 block font-semibold uppercase tracking-wider text-[11px]">
-                Direct Official Enquiries
-              </span>
-              <p className="text-stone-600 leading-relaxed">
-                For institutional partnerships, provincial coordination, or mentee enrolment, contact the Secretariat at{' '}
-                <a href={`mailto:${ORG_DETAILS.contacts.generalEmail}`} className="font-semibold text-stone-900 underline">
-                  {ORG_DETAILS.contacts.generalEmail}
-                </a>.
-              </p>
+            {/* Official Enquiries & Donations Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div className="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-xs space-y-2">
+                <span className="text-stone-400 block font-semibold uppercase tracking-wider text-[10px]">
+                  General Enquiries & Enrolment
+                </span>
+                <a 
+                  href={`mailto:${ORG_DETAILS.contacts.generalEmail}`} 
+                  className="font-mono text-xs font-semibold text-stone-900 hover:underline flex items-center gap-1.5"
+                >
+                  <Mail className="w-3.5 h-3.5 text-stone-500" />
+                  <span>{ORG_DETAILS.contacts.generalEmail}</span>
+                </a>
+                <p className="text-[11px] text-stone-500 leading-snug">
+                  Partnerships, school outreach & program coordination.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-xs space-y-2">
+                <span className="text-stone-400 block font-semibold uppercase tracking-wider text-[10px]">
+                  Donations & Sponsorships
+                </span>
+                <a 
+                  href={`mailto:${ORG_DETAILS.contacts.donationsEmail}`} 
+                  className="font-mono text-xs font-semibold text-stone-900 hover:underline flex items-center gap-1.5"
+                >
+                  <Mail className="w-3.5 h-3.5 text-stone-500" />
+                  <span>{ORG_DETAILS.contacts.donationsEmail}</span>
+                </a>
+                <p className="text-[11px] text-stone-500 leading-snug">
+                  Proof of payment, equipment grants & sponsorship.
+                </p>
+              </div>
             </div>
           </div>
 

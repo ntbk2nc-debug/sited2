@@ -2,5 +2,5 @@
   "name": "Boys 2 Men South Africa",
   "description": "Official platform for Boys 2 Men South Africa NPO (053-899 NPO), grooming boys into upright leaders through mentorship camps, STEM, life skills, and career guidance in rural KwaZulu-Natal.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["server_side_pg"]
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

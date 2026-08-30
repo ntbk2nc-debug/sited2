@@ -122,10 +122,13 @@ export const DonateAndSponsorship: React.FC = () => {
 
             <div className="p-4 rounded-2xl bg-stone-800/50 border border-stone-700/60 text-stone-300 space-y-1">
               <span className="text-[11px] text-stone-300 font-semibold uppercase tracking-wider block">
-                Recommended EFT Reference:
+                Recommended EFT Reference & Proof of Payment:
               </span>
               <p className="text-xs text-stone-300">
-                <strong className="text-white">"B2M + Your Name / Contact"</strong> (e.g. <em>B2M Donor 0761234567</em>)
+                Use <strong className="text-white">"B2M + Your Name / Contact"</strong> and email deposit slips / sponsorship enquiries to{' '}
+                <a href={`mailto:${ORG_DETAILS.contacts.donationsEmail}`} className="text-amber-400 hover:text-amber-300 font-mono font-medium underline">
+                  {ORG_DETAILS.contacts.donationsEmail}
+                </a>.
               </p>
             </div>
           </div>

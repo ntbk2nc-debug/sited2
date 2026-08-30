@@ -29,7 +29,8 @@ export const ORG_DETAILS = {
       phone: '068 454 5045',
       email: 'b2msouthafrica@gmail.com',
     },
-    generalEmail: 'b2msouthafrica@gmail.com',
+    generalEmail: 'info@boys2mensa.co.za',
+    donationsEmail: 'donations@boys2mensa.co.za',
   },
   banking: {
     bankName: 'FNB (First National Bank)',
